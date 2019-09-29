@@ -1,0 +1,40 @@
+LTI Configuration in WeBWorK
+
+# File: webwork2/conf/LTI_Authen.conf
+
+$debug_lti_parameters = 0; (for testing I set to 1)
+$debug_lti_grade_passback = 0; (for testing I set to 1)
+$external_auth=0;
+$permissionLevels{change_password} = "ta";
+$preferred_source_of_username = 'lis_person_sourcedid';
+$LTIBasicConsumerSecret = "yourSecretHere"; (must be set)
+$NonceLifeTime=60;
+$LMSManageUserData=1;
+$permissionLevels{change_email} = "ta";
+$LTIBasicToThisSiteURL = "http://webwork.qcc.cuny.edu/webwork2";
+$LTIGradeMode = "homework";
+LTIGradeOnSubmit = 1;
+$LTIMassUpdateInterval = 60;
+$LTIAccountCreationCutoff = "ta";
+
+# The following wasw modified in the custom section from the original in the file
+# to custom the section and recitation of the user in WeBWorK
+# It takes the name of the course in Blackboard (as orignally created) and add the course 
+
+$LTI_modify_user = sub {
+  # The self object from LTIAdvanced.pm
+  my $self = shift;
+  # The user object to be modified
+  my $user = shift;
+
+  # Parse context_id for additional information.  E.G.
+  my $r = $self ->{r};
+  my @course_id=split /\s/, $r->param("context_title");
+  $user->{"section"} = $course_id[-5].' '.$course_id[-4].' '.$course_id[-3]; #customized to QCC info
+  $user->{"recitation"} = $course_id[0].' '.$course_id[1];
+
+
+Note:
+Initially, I was not able to authenticate a user in WeBWorK via Blackboard because Blackboard was not sending the info that identifies the user. Thanks to Mike Cage pointing it out, 
+I asked Krafins Valcin(CUNY Central and the LTI changed from transfering the data over SSL to transfering data
+over any connection.
