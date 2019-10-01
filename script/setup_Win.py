@@ -6,7 +6,7 @@
 # To create a stand alone app:
 # Go to terminal
 # Type: cd /Users/Beebee/Desktop/wwclasslist
-# Then type: python setup_Win2.py build
+# Then type: python setup_Win.py build
 
 application_title = "CUNYFirst2WW_Converter" #what you want to application to be called
 main_python_file = "WWClasslist.py" #the name of the python file you use to run the program
