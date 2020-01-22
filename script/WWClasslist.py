@@ -102,7 +102,7 @@ def CSV2WW(csvFile,lstFile):
                 # login name
                 letters = list(firstname)
                 initial = letters[0]
-                username = initial+lastname
+                username = initial+lastname+userid[-2:]
                 username = username.lower()
                 username = username.replace(" ", "")
 
