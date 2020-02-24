@@ -2,6 +2,7 @@
 
  This is a script that takes a list of students from CUNYFirst MyInfo and produces a classlist file
  which can be used to import many students into WeBWorK quickly.
+ 
  Author: Bianca Sosnovski, QCC
 
  INSTRUCTIONS
