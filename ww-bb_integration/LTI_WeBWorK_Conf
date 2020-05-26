@@ -2,8 +2,8 @@ LTI Configuration in WeBWorK
 
 # File: webwork2/conf/LTI_Authen.conf
 
-$debug_lti_parameters = 0; (for testing I set to 1)
-$debug_lti_grade_passback = 0; (for testing I set to 1)
+$debug_lti_parameters = 0; (for testing set to 1)
+$debug_lti_grade_passback = 0; (for testing set to 1)
 $external_auth=0;
 $permissionLevels{change_password} = "ta";
 $preferred_source_of_username = 'lis_person_sourcedid';
