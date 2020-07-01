@@ -17,9 +17,9 @@ LTIGradeOnSubmit = 1;
 $LTIMassUpdateInterval = 60;
 $LTIAccountCreationCutoff = "ta";
 
-# The following wasw modified in the custom section from the original in the file
-# to custom the section and recitation of the user in WeBWorK
-# It takes the name of the course in Blackboard (as orignally created) and add the course 
+# The following was modified in the custom section from the original code in the file
+# to customize the section and recitation info of the user in WeBWorK
+# It takes the name of the course in Blackboard (as orignally created) and add field course in WeBWorK 
 
 $LTI_modify_user = sub {
   # The self object from LTIAdvanced.pm
@@ -27,7 +27,7 @@ $LTI_modify_user = sub {
   # The user object to be modified
   my $user = shift;
 
-  # Parse context_id for additional information.  E.G.
+  # Parse context_id for additional information. 
   my $r = $self ->{r};
   my @course_id=split /\s/, $r->param("context_title");
   $user->{"section"} = $course_id[-5].' '.$course_id[-4].' '.$course_id[-3]; #customized to QCC info
@@ -36,5 +36,5 @@ $LTI_modify_user = sub {
 
 Note:
 Initially, I was not able to authenticate a user in WeBWorK via Blackboard because Blackboard was not sending the info that identifies the user. Thanks to Mike Cage pointing it out, 
-I asked Krafins Valcin(CUNY Central and the LTI changed from transfering the data over SSL to transfering data
+I asked Krafins Valcin (CUNY Central) and he changed the settings from transfering the data over SSL to transfering data
 over any connection.
