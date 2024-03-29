@@ -32,6 +32,7 @@ $LTI_modify_user = sub {
   my @course_id=split /\s/, $r->param("context_title");
   $user->{"section"} = $course_id[-5].' '.$course_id[-4].' '.$course_id[-3]; #customized to QCC info
   $user->{"recitation"} = $course_id[0].' '.$course_id[1];
+ };
 
 
 Note:
